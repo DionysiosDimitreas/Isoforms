@@ -6,10 +6,7 @@
 
 ```
 # Filter out PFAM domain-domain interaction information (copied from CanIsoNet)
-less databases/3did/v2022_01/3did_flat.gz | grep "^#=ID" | cut -f4,5 | perl -ane '$F[0]=~ s/.*(PF\d+).*/$1/; $F[1]=~ s/.*(PF\d+).*/$1/; print "$F[0]\t$F[1]\n$F[1]\t$F[0]\n"' | sort -u | gzip > 3did_pfamInteractions_1804.tsv.gz
-
-# Reformat to DIMA format
-python3 scripts/3did2dima.py 3did_pfamInteractions_1804.tsv.gz | gzip > 3did_1804.tbl.gz
+less databases/3did/v2022_01/3did_flat.gz | grep "^#=ID" | cut -f4,5 | perl -ane '$F[0]=~ s/.*(PF\d+).*/$1/; $F[1]=~ s/.*(PF\d+).*/$1/; print "$F[0]\t$F[1]\n$F[1]\t$F[0]\n"' | sort -u | gzip > results/3did_pfamInteractions_1804.tsv.gz
 ```
 
 2. Prepare Ensembl fasta files for PFAM domain identification
@@ -43,7 +40,7 @@ Now, run the script by providing three arguments:
 
 Example:
 ```bash
-./scripts/run_pfam_scan.sh fasta/ensembl_v75/human/ ~/databases/Pfam/Pfam-A.hmm ./pfam_scan_results
+./scripts/run_pfam_scan.sh fasta/ensembl_v75/human/ ~/databases/Pfam/Pfam-A.hmm ~/
 ```
 
 The script will create the output directory, run `hmmscan` on every `.fasta` file, and merge all results into a single compressed file named `pfam_all_hits.domtbl.gz`.
