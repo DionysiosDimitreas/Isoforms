@@ -40,10 +40,18 @@ Now, run the script by providing three arguments:
 
 Example:
 ```bash
-./scripts/run_pfam_scan.sh fasta/ensembl_v75/human/ ~/databases/Pfam/Pfam-A.hmm ~/
+./scripts/run_pfam_scan.sh fasta/ensembl_v75/human/ databases/Pfam/Pfam-A.hmm PfamScan_results/
 ```
 
 The script will create the output directory, run `hmmscan` on every `.fasta` file, and merge all results into a single compressed file named `pfam_all_hits.domtbl.gz`.
+
+```
+# Merge results
+find PfamScan_results/ -name "*.domtblout" -print0 | xargs -0 cat | gzip > ensp_pfam_v115.domtblout.txt.gz
+
+# Clean merged results
+python3 scripts/clean_pfam.py
+```
 
 4. Get Ligand-Receptor gene pairs from CellChatDB
 
