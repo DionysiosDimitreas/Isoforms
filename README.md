@@ -43,7 +43,7 @@ Example:
 ./scripts/run_pfam_scan.sh fasta/ensembl_v75/human/ databases/Pfam/Pfam-A.hmm PfamScan_results/
 ```
 
-The script will create the output directory, run `hmmscan` on every `.fasta` file, and merge all results into a single compressed file named `pfam_all_hits.domtbl.gz`.
+The PfamScan results will be merged in one file, and cleaned.
 
 ```
 # Merge results
