@@ -34,9 +34,9 @@ chmod +x scripts/run_pfam_scan.sh
 ```
 
 Now, run the script by providing three arguments:
-1.  Your input FASTA directory
-2.  The path to your `Pfam-A.hmm` database
-3.  A directory name for the results
+i.  Your input FASTA directory
+ii.  The path to your `Pfam-A.hmm` database
+iii.  A directory name for the results
 
 Example:
 ```bash
@@ -53,8 +53,18 @@ find PfamScan_results/ -name "*.domtblout" -print0 | xargs -0 cat | gzip > ensp_
 python3 scripts/clean_pfam.py
 ```
 
-4. Get Ligand-Receptor gene pairs from CellChatDB
+4. Get Ligand-Receptor gene pairs from CellChatDB in TSV format
 
 ```
 Rscript scripts/extract_cellchat_pairs.R
 ```
+
+5. Gene Identifier Map
+
+This project uses `biomart_export.tsv` as a translation table to map various gene identifiers. This file was generated using **Ensembl BioMart v115**.
+
+The table includes the following columns:
+* `ENSG`: Ensembl Gene ID
+* `ENST`: Ensembl Transcript ID
+* `ENSP`: Ensembl Protein ID
+* `HGNC symbol`: Official gene name
