@@ -25,7 +25,7 @@ zless databases/ensembl/v75/Homo_sapiens.GRCh37.75.pep.all.fa.gz | perl -ne 'if(
 3. Run PfamScan for domain identification
 This repository includes a script to automate running `hmmscan` on a batch of FASTA files and merging the results.
 
-***a) Prerequisites ***
+** a) Prerequisites **
 You must have [HMMER](http://hmmer.org/) (which includes `hmmscan` and `hmmpress`) installed and available in your system's PATH.
 
 ### 2. Run the Script
