@@ -25,11 +25,12 @@ zless databases/ensembl/v75/Homo_sapiens.GRCh37.75.pep.all.fa.gz | perl -ne 'if(
 3. Run PfamScan for domain identification
 This repository includes a script to automate running `hmmscan` on a batch of FASTA files and merging the results.
 
-  **a) Prerequisites:**
+  a) Prerequisites:
 
 You must have [HMMER](http://hmmer.org/) (which includes `hmmscan` and `hmmpress`) installed and available in your system's PATH.
 
-  **b) Run the Script**
+  b) Run the Script
+
 First, make the script executable (you only need to do this once):
 ```bash
 chmod +x scripts/run_pfam_scan.sh
@@ -40,10 +41,15 @@ Now, run the script by providing three arguments:
 2.  The path to your `Pfam-A.hmm` database
 3.  A directory name for the results
 
-**Example:**
+Example:
 ```bash
 ./scripts/run_pfam_scan.sh fasta/ensembl_v75/human/ ~/databases/Pfam/Pfam-A.hmm ./pfam_scan_results
 ```
 
 The script will create the output directory, run `hmmscan` on every `.fasta` file, and merge all results into a single compressed file named `pfam_all_hits.domtbl.gz`.
 
+4. Get Ligand-Receptor gene pairs from CellChatDB
+
+```
+Rscript scripts/extract_cellchat_pairs.R
+```
