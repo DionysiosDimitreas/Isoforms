@@ -68,3 +68,9 @@ The table includes the following columns:
 * `ENST`: Ensembl Transcript ID
 * `ENSP`: Ensembl Protein ID
 * `HGNC symbol`: Official gene name
+
+6. Create PPI network
+
+```
+python3 build_isoform_network.py
+```
